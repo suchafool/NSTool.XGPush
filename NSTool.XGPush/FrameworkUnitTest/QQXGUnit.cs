@@ -137,8 +137,8 @@ namespace FrameworkUnitTest
                 aps = new APS
                 {
                     alert = new APSAlert { 
-                        body="testSingleAccountIOS message body",
-                        title="testSingleAccountIOS title"
+                        body="testSingleAccountIOS message body"
+                        //title="testSingleAccountIOS title"
                     }
                 }
 
