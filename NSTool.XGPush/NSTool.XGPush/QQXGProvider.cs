@@ -266,6 +266,31 @@ namespace NSTool.XGPush
 
         }
 
+
+        /// <summary>
+        /// PUSH消息到多个账户 
+        /// added by suchafool, 2015-8-4
+        /// </summary>
+        /// <param name="maParm"></param>
+        /// <returns></returns>
+        public XGResult<List<int>> PushMultiAccount(XGPushMultiAccountParam maParm)
+        {
+            if (maParm.Account_list == null || maParm.Account_list.Count <= 0) throw new ArgumentException("maParm.Account_list参数不能为空！");
+
+            ParamBaseValidata(maParm);
+            PushParamBaseValidata(maParm);
+            ParamBaseCreate(maParm, XGMethod.account_list);
+
+            string pushMultiAccountUrl = string.Format("{0}/{1}", apiFullUrl, XGMethod.account_list.ToString());
+            string postData = CreateXGParamPostStr<XGPushMultiAccountParam>(maParm, "&");
+            System.Diagnostics.Trace.Write("\r\n===postData的值：" + postData);
+
+            string result = httpClient.Post(pushMultiAccountUrl, postData);
+            System.Diagnostics.Trace.Write("\r\n===返回result的值：" + result);
+
+            return JsonHelper.FromJson<XGResult<List<int>>>(result);
+        }
+
         /// <summary>
         /// PUSH消息到所有设备
         /// </summary>

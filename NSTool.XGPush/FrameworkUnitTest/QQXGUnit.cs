@@ -144,6 +144,39 @@ namespace FrameworkUnitTest
         }
 
         /// <summary>
+        /// 多个账户
+        /// added by suchafool 2015-8-4
+        /// </summary>
+        [TestMethod]
+        public void XGTestMultiAccount()
+        {
+            QQXGProvider qqxg = new QQXGProvider();
+            var xgp = new XGPushMultiAccountParam();
+            xgp.Timestamp = null;
+            xgp.Valid_time = 600; //600;
+            xgp.Sign = null;
+            //============测试DEMO==============
+            //xgp.Access_id = 2100025233;
+            //xgp.Access_Key = "ARQ4CB14Q92X";
+            //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
+            //============测试DEMO==============
+            xgp.Access_id = 2100138037;
+            //xgp.Access_Key = "AUP1I5W741WJ";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
+            xgp.Message_type = 1;
+            xgp.Message = new NotifyMessage()
+            {
+                Title = "XGTestMultiAccount",
+                Content = "XGTestMultiAccount",
+                Vibrate = 1,
+                Ring = 1
+            };
+            xgp.Account_list = new System.Collections.Generic.List<string> { "99A27D66995F41EEAD2F6FE5A1595AE3" };
+            //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
+            XGResult<System.Collections.Generic.List<int>> a = qqxg.PushMultiAccount(xgp);
+        }
+
+        /// <summary>
         /// 按标签推送
         /// </summary>
         [TestMethod]

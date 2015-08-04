@@ -52,7 +52,13 @@ namespace NSTool.XGPush.Core
         /// <summary>
         /// 取消尚未触发的定时群发任务
         /// </summary>
-        cancel_timing_task = 64
+        cancel_timing_task = 64,
+
+        /// <summary>
+        /// Push消息（包括通知和透传消息）给多个账户或别名
+        /// added by suchafool 2015-8-4
+        /// </summary>
+        account_list = 128
 
     }
 }

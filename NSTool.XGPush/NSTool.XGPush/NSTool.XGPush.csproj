@@ -60,6 +60,7 @@
     <Compile Include="Core\ReturnMsgCode.cs" />
     <Compile Include="Core\XGMethod.cs" />
     <Compile Include="Core\XGConst.cs" />
+    <Compile Include="Core\XGPushMultiAccountParam.cs" />
     <Compile Include="Core\XGPushResult.cs" />
     <Compile Include="Core\XGResult.cs" />
     <Compile Include="Core\XGParamBase.cs" />
