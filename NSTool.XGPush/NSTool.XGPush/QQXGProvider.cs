@@ -489,6 +489,7 @@ namespace NSTool.XGPush
                     if (item.Name.Equals("Message", StringComparison.CurrentCultureIgnoreCase)
                         || item.Name.Equals("Tags_list", StringComparison.CurrentCultureIgnoreCase)
                         || item.Name.Equals("Push_ids", StringComparison.CurrentCultureIgnoreCase)
+                        || item.Name.Equals("Account_list", StringComparison.InvariantCultureIgnoreCase)
                         )
                     {
                         tmpvalue = JsonHelper.ToJson(tmpvalue);
