@@ -125,12 +125,7 @@ namespace FrameworkUnitTest
             xgp.Sign = null;
             //============测试DEMO==============
             xgp.Access_id = 2100138037;
-            //xgp.Access_Key = "ARQ4CB14Q92X";
             xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
-            //============测试DEMO==============
-            //xgp.Access_id = 2100025346;
-            //xgp.Access_Key = "AUP1I5W741WJ";
-            //xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
             xgp.Message_type = 0;
             xgp.Message = new XGMessageIOS()
             {
@@ -145,7 +140,7 @@ namespace FrameworkUnitTest
             };
             xgp.Environment = 2;
             xgp.Account = "99A27D66995F41EEAD2F6FE5A1595AE3";
-            //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
+            
             XGResult<string> a = qqxg.PushSingleAccount(xgp);
         }
 
