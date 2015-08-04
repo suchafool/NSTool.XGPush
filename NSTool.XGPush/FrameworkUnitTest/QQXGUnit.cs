@@ -3,6 +3,7 @@ using NSTool.XGPush;
 using NSTool.XGPush.Base;
 using NSTool.XGPush.Core;
 using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Xml.Serialization;
@@ -21,7 +22,7 @@ namespace FrameworkUnitTest
     [TestClass]
     public class QQXGUnit
     {
-        
+
         /// <summary>
         /// 推送所有设备
         /// </summary>
@@ -35,9 +36,9 @@ namespace FrameworkUnitTest
             xgp.Sign = null;
             //实际key请使用实际的，下面仅演示作用
             //============测试key1==============
-            xgp.Access_id = 2100025233;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "ARQ4CB14Q92X";
-            xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             //============测试key2==============
             //xgp.Access_id = 2100025346;
             //xgp.Access_Key = "AUP1I5W741WJ";
@@ -46,7 +47,7 @@ namespace FrameworkUnitTest
             xgp.Expire_time = 3600;
             xgp.Message = new NotifyMessage()
             {
-                Custom_content = new  SerializableDictionary<string,string>(){
+                Custom_content = new SerializableDictionary<string, string>(){
                   {"type","123"},{"type1","456"}
                 },
                 //Accept_time = new System.Collections.Generic.List<AcceptTime>(){
@@ -92,9 +93,9 @@ namespace FrameworkUnitTest
             xgp.Valid_time = 600; //600;
             xgp.Sign = null;
             //============测试DEMO==============
-            xgp.Access_id = 2100025233;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "ARQ4CB14Q92X";
-            xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             //============测试DEMO==============
             //xgp.Access_id = 2100025346;
             //xgp.Access_Key = "AUP1I5W741WJ";
@@ -106,9 +107,46 @@ namespace FrameworkUnitTest
                 Content = "XGTestSingleDevice",
                 Vibrate = 1
             };
-            xgp.Device_token = "ef8d1c5b866652d14e62bbee2aac3b28b7ed2bf9";
+            xgp.Device_token = "883016628bada11943a0b17b27ec239c0d4f2e5a";
             //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
             XGResult<string> a = qqxg.PushSingleDevice(xgp);
+        }
+
+        /// <summary>
+        /// 单个账户 IOS
+        /// </summary>
+        [TestMethod]
+        public void XGTestSingleAccountIOS()
+        {
+            QQXGProvider qqxg = new QQXGProvider();
+            XGPushSingleAccountParam xgp = new XGPushSingleAccountParam();
+            xgp.Timestamp = null;
+            xgp.Valid_time = 600; //600;
+            xgp.Sign = null;
+            //============测试DEMO==============
+            xgp.Access_id = 2100138037;
+            //xgp.Access_Key = "ARQ4CB14Q92X";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
+            //============测试DEMO==============
+            //xgp.Access_id = 2100025346;
+            //xgp.Access_Key = "AUP1I5W741WJ";
+            //xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Message_type = 0;
+            xgp.Message = new XGMessageIOS()
+            {
+                aps = new APS
+                {
+                    alert = new APSAlert { 
+                        body="testSingleAccountIOS message body",
+                        title="testSingleAccountIOS title"
+                    }
+                }
+
+            };
+            xgp.Environment = 2;
+            xgp.Account = "99A27D66995F41EEAD2F6FE5A1595AE3";
+            //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
+            XGResult<string> a = qqxg.PushSingleAccount(xgp);
         }
 
         /// <summary>
@@ -127,9 +165,9 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             xgp.Message_type = 1;
             xgp.Message = new NotifyMessage()
             {
@@ -138,14 +176,13 @@ namespace FrameworkUnitTest
                 Vibrate = 1,
                 Ring = 1
             };
-            xgp.Account = "ffff";
+            xgp.Account = "99A27D66995F41EEAD2F6FE5A1595AE3";
             //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
             XGResult<string> a = qqxg.PushSingleAccount(xgp);
         }
 
         /// <summary>
         /// 多个账户
-        /// added by suchafool 2015-8-4
         /// </summary>
         [TestMethod]
         public void XGTestMultiAccount()
@@ -173,7 +210,7 @@ namespace FrameworkUnitTest
             };
             xgp.Account_list = new System.Collections.Generic.List<string> { "99A27D66995F41EEAD2F6FE5A1595AE3" };
             //POSTopenapi.xg.qq.com/v2/push/all_deviceaccess_id=2100025233timestamp=1399859926valid_time=6006ae193c85570ad1cc8fc9540560093b1
-            XGResult<System.Collections.Generic.List<int>> a = qqxg.PushMultiAccount(xgp);
+            XGResult<List<int>> a = qqxg.PushMultiAccount(xgp);
         }
 
         /// <summary>
@@ -192,9 +229,9 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             xgp.Message_type = 1;
             xgp.Message = new NotifyMessage()
             {
@@ -227,9 +264,9 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             xgp.Push_ids = new System.Collections.Generic.List<Push_Id_Obj>();
             xgp.Push_ids.Add(new Push_Id_Obj() { Push_id = "152947" });
             xgp.Push_ids.Add(new Push_Id_Obj() { Push_id = "152944" });
@@ -253,9 +290,9 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             XGResult<XGDeviceNumResult> a = qqxg.GetAppDeviceNum(xgp);
         }
 
@@ -275,9 +312,9 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
 
             XGResult<XGQueryAppTagsResult> a = qqxg.QueryAppTags(xgp);
         }
@@ -298,29 +335,29 @@ namespace FrameworkUnitTest
             //xgp.Access_Key = "ARQ4CB14Q92X";
             //xgp.Secret_Key = "6ae193c85570ad1cc8fc9540560093b1";
             //============测试DEMO==============
-            xgp.Access_id = 2100025346;
+            xgp.Access_id = 2100138037;
             //xgp.Access_Key = "AUP1I5W741WJ";
-            xgp.Secret_Key = "f2391810bc98c0d7435ec7c96b8f524f";
+            xgp.Secret_Key = "e52c218928346bc114da77e7b9fe0503";
             xgp.Push_id = "139303";
             XGResult<XGStatusResult> a = qqxg.PushCancelTimingTask(xgp);
         }
 
 
-        
+
         /// <summary>
         /// 测试数据序列化
         /// </summary>
         [TestMethod]
         public void XGTestJosn()
         {
-            XGMessage xg = new XGMessage();
+            XGMessageAndroid xg = new XGMessageAndroid();
             xg.Custom_content = new SerializableDictionary<string, string>();
             xg.Custom_content.Add("k1", "123");
             xg.Custom_content.Add("k2", "456");
             xg.Accept_time = new System.Collections.Generic.List<AcceptTime>();
             xg.Accept_time.Add(new AcceptTime() { Start = new XGTime() { Hour = "09", Min = "00" }, End = new XGTime() { Hour = "12", Min = "00" } });
             xg.Accept_time.Add(new AcceptTime() { Start = new XGTime() { Hour = "13", Min = "00" }, End = new XGTime() { Hour = "15", Min = "00" } });
-            string xml = SerializeToXML<XGMessage>(xg);
+            string xml = SerializeToXML<XGMessageAndroid>(xg);
             Console.WriteLine(xml);
             string a = JsonHelper.ToJson(xg);
             Console.WriteLine(a);

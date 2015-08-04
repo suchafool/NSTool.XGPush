@@ -14,7 +14,7 @@ namespace NSTool.XGPush.Core
     /// </summary>
     [Serializable]
     [XmlInclude(typeof(NotifyMessage))]
-    public class NotifyMessage : XGMessage
+    public class NotifyMessage : XGMessageAndroid
     {
         private uint? builder_id;
 

@@ -54,7 +54,9 @@
     <Compile Include="Base\SerializableDictionary.cs" />
     <Compile Include="Base\UploadEventArgs.cs" />
     <Compile Include="Core\NotifyMessage.cs" />
+    <Compile Include="Core\XGMessageAndroid.cs" />
     <Compile Include="Core\XGMessage.cs" />
+    <Compile Include="Core\XGMessageIOS.cs" />
     <Compile Include="Core\XGPushAllDeviceParam.cs" />
     <Compile Include="Core\IMessagePushProvider.cs" />
     <Compile Include="Core\ReturnMsgCode.cs" />

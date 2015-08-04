@@ -15,42 +15,6 @@ namespace NSTool.XGPush.Core
     [Serializable]
     public class XGMessage
     {
-        private string title;
-
-        /// <summary>
-        /// 标题，必填
-        /// </summary>
-        [JsonProperty("title")]
-        public string Title
-        {
-            get { return title; }
-            set { title = value; }
-        }
-
-        private string content;
-
-        /// <summary>
-        /// 内容，必填
-        /// </summary>
-        [JsonProperty("content")]
-        public string Content
-        {
-            get { return content; }
-            set { content = value; }
-        }
-
-        private SerializableDictionary<string,string> custom_content;
-
-        /// <summary>
-        /// 用户自定义的key-value，选填
-        /// </summary>
-        [JsonProperty("custom_content")]
-        public SerializableDictionary<string, string> Custom_content
-        {
-            get { return custom_content; }
-            set { custom_content = value; }
-        }
-
         private List<AcceptTime> accept_time;
 
         /// <summary>
@@ -62,11 +26,8 @@ namespace NSTool.XGPush.Core
             get { return accept_time; }
             set { accept_time = value; }
         }
-
-
-
     }
-
+    
     /// <summary>
     /// 允许推送给用户的时段
     /// </summary>
